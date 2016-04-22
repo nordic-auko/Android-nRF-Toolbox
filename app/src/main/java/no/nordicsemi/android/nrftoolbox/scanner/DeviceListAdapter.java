@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.scanner;
+package no.nordicsemi.android.nrftoolhax.scanner;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 import no.nordicsemi.android.support.v18.scanner.ScanResult;
 
 /**

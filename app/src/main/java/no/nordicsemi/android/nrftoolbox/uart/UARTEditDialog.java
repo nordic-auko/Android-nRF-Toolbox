@@ -20,12 +20,10 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.app.Dialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
@@ -42,8 +40,8 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.uart.domain.Command;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.uart.domain.Command;
 
 public class UARTEditDialog extends DialogFragment implements View.OnClickListener, GridView.OnItemClickListener {
 	private final static String ARG_INDEX = "index";

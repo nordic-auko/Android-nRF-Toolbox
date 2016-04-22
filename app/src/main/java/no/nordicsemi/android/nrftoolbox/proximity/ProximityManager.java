@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.proximity;
+package no.nordicsemi.android.nrftoolhax.proximity;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -41,10 +41,10 @@ import java.util.UUID;
 
 import no.nordicsemi.android.error.GattError;
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.parser.AlertLevelParser;
-import no.nordicsemi.android.nrftoolbox.utility.DebugLogger;
-import no.nordicsemi.android.nrftoolbox.utility.ParserUtils;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.parser.AlertLevelParser;
+import no.nordicsemi.android.nrftoolhax.utility.DebugLogger;
+import no.nordicsemi.android.nrftoolhax.utility.ParserUtils;
 
 public class ProximityManager extends BleManager<ProximityManagerCallbacks> {
 	private final String TAG = "ProximityManager";

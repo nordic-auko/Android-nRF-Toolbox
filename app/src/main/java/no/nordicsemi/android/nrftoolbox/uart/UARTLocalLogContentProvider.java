@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.net.Uri;
 
@@ -28,7 +28,7 @@ import no.nordicsemi.android.log.localprovider.LocalLogContentProvider;
 
 public class UARTLocalLogContentProvider extends LocalLogContentProvider {
 	/** The authority for the contacts provider. */
-	public final static String AUTHORITY = "no.nordicsemi.android.nrftoolbox.uart.log";
+	public final static String AUTHORITY = "no.nordicsemi.android.nrftoolhax.uart.log";
 	/** A content:// style uri to the authority for the log provider. */
 	public final static Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
 

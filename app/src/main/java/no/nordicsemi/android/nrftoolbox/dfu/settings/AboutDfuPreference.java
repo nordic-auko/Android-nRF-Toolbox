@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.dfu.settings;
+package no.nordicsemi.android.nrftoolhax.dfu.settings;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +29,7 @@ import android.preference.Preference;
 import android.util.AttributeSet;
 import android.widget.Toast;
 
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 public class AboutDfuPreference extends Preference {
 

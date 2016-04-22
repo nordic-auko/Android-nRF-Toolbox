@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.bpm;
+package no.nordicsemi.android.nrftoolhax.bpm;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -32,9 +32,9 @@ import java.util.Queue;
 import java.util.UUID;
 
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.parser.BloodPressureMeasurementParser;
-import no.nordicsemi.android.nrftoolbox.parser.IntermediateCuffPressureParser;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.parser.BloodPressureMeasurementParser;
+import no.nordicsemi.android.nrftoolhax.parser.IntermediateCuffPressureParser;
 
 public class BPMManager extends BleManager<BPMManagerCallbacks> {
 	/** Blood Pressure service UUID */

@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.template;
+package no.nordicsemi.android.nrftoolhax.template;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -31,8 +31,8 @@ import java.util.Queue;
 import java.util.UUID;
 
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.parser.TemplateParser;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.parser.TemplateParser;
 
 /**
  * Modify to template manager to match your requirements.

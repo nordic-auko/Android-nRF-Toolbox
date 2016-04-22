@@ -20,9 +20,9 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
-import no.nordicsemi.android.nrftoolbox.profile.BleManagerCallbacks;
+import no.nordicsemi.android.nrftoolhax.profile.BleManagerCallbacks;
 
 public interface UARTManagerCallbacks extends BleManagerCallbacks {
 

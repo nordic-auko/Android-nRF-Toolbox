@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -35,7 +35,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import no.nordicsemi.android.log.LogContract.Log.Level;
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 public class UARTLogAdapter extends CursorAdapter {
 	private static final SparseIntArray mColors = new SparseIntArray();

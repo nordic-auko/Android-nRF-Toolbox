@@ -69,7 +69,7 @@
 4. Remember to add your activities and the service in the AndroidManifest.xml file. The nRF Toolbox lists all activities with the following intent filter:
             <intent-filter>
   				<action android:name="android.intent.action.MAIN" />
-  				<category android:name="no.nordicsemi.android.nrftoolbox.LAUNCHER" />
+  				<category android:name="no.nordicsemi.android.nrftoolhax.LAUNCHER" />
   			</intent-filter>
 
 5. Feel free to rename the nRF Toolbox application (/res/values/strings.xml ->app_name), change the toolbar colors (/res/values/color.xml -> actionBarColor, actionBarColorDark).

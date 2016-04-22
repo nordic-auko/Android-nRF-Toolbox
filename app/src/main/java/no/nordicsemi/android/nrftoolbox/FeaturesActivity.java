@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox;
+package no.nordicsemi.android.nrftoolhax;
 
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -49,11 +49,11 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import no.nordicsemi.android.nrftoolbox.adapter.AppAdapter;
+import no.nordicsemi.android.nrftoolhax.adapter.AppAdapter;
 
 public class FeaturesActivity extends AppCompatActivity {
-	private static final String MCP_CATEGORY = "no.nordicsemi.android.nrftoolbox.LAUNCHER";
-	private static final String UTILS_CATEGORY = "no.nordicsemi.android.nrftoolbox.UTILS";
+	private static final String MCP_CATEGORY = "no.nordicsemi.android.nrftoolhax.LAUNCHER";
+	private static final String UTILS_CATEGORY = "no.nordicsemi.android.nrftoolhax.UTILS";
 	private static final String MCP_PACKAGE = "no.nordicsemi.android.mcp";
 	private static final String MCP_CLASS = MCP_PACKAGE + ".DeviceListActivity";
 	private static final String MCP_MARKET_URI = "market://details?id=no.nordicsemi.android.mcp";

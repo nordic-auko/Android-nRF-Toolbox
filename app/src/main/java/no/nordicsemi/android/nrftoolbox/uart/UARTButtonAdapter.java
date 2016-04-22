@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +28,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.uart.domain.Command;
-import no.nordicsemi.android.nrftoolbox.uart.domain.UartConfiguration;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.uart.domain.Command;
+import no.nordicsemi.android.nrftoolhax.uart.domain.UartConfiguration;
 
 public class UARTButtonAdapter extends BaseAdapter {
 	private UartConfiguration mConfiguration;

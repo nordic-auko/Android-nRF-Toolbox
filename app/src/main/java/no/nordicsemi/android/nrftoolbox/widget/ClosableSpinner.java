@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.widget;
+package no.nordicsemi.android.nrftoolhax.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

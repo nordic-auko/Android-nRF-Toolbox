@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.csc;
+package no.nordicsemi.android.nrftoolhax.csc;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -35,11 +35,11 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.csc.settings.SettingsActivity;
-import no.nordicsemi.android.nrftoolbox.csc.settings.SettingsFragment;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileServiceReadyActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.csc.settings.SettingsActivity;
+import no.nordicsemi.android.nrftoolhax.csc.settings.SettingsFragment;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileServiceReadyActivity;
 
 public class CSCActivity extends BleProfileServiceReadyActivity<CSCService.CSCBinder> {
 	private TextView mSpeedView;

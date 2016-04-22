@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.dfu;
+package no.nordicsemi.android.nrftoolhax.dfu;
 
 import android.app.Activity;
 

@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.proximity;
+package no.nordicsemi.android.nrftoolhax.proximity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,10 +32,10 @@ import android.widget.ImageView;
 
 import java.util.UUID;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileServiceReadyActivity;
-import no.nordicsemi.android.nrftoolbox.utility.DebugLogger;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileServiceReadyActivity;
+import no.nordicsemi.android.nrftoolhax.utility.DebugLogger;
 
 public class ProximityActivity extends BleProfileServiceReadyActivity<ProximityService.ProximityBinder> {
 	private static final String TAG = "ProximityActivity";

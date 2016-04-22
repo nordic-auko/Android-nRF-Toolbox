@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.Manifest;
 import android.animation.ArgbEvaluator;
@@ -32,9 +32,11 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothDevice;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -51,6 +53,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.NotificationCompat;
@@ -80,22 +83,26 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
+import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.dfu.adapter.FileBrowserAppsAdapter;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileServiceReadyActivity;
-import no.nordicsemi.android.nrftoolbox.uart.database.DatabaseHelper;
-import no.nordicsemi.android.nrftoolbox.uart.domain.Command;
-import no.nordicsemi.android.nrftoolbox.uart.domain.UartConfiguration;
-import no.nordicsemi.android.nrftoolbox.uart.wearable.UARTConfigurationSynchronizer;
-import no.nordicsemi.android.nrftoolbox.utility.FileHelper;
-import no.nordicsemi.android.nrftoolbox.widget.ClosableSpinner;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.dfu.adapter.FileBrowserAppsAdapter;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileServiceReadyActivity;
+import no.nordicsemi.android.nrftoolhax.uart.database.DatabaseHelper;
+import no.nordicsemi.android.nrftoolhax.uart.domain.Command;
+import no.nordicsemi.android.nrftoolhax.uart.domain.UartConfiguration;
+import no.nordicsemi.android.nrftoolhax.uart.wearable.UARTConfigurationSynchronizer;
+import no.nordicsemi.android.nrftoolhax.utility.FileHelper;
+import no.nordicsemi.android.nrftoolhax.widget.ClosableSpinner;
 
 public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UARTBinder> implements UARTInterface,
 		UARTNewConfigurationDialogFragment.NewConfigurationDialogListener, UARTConfigurationsAdapter.ActionListener, AdapterView.OnItemSelectedListener,
@@ -126,6 +133,90 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 	private UARTService.UARTBinder mServiceBinder;
 	private ConfigurationListener mConfigurationListener;
 	private boolean mEditMode;
+
+    private final static int PACKETS_PER_ACK = 10;
+    public static final String BROADCAST_UART_TX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_TX";
+    public static final String BROADCAST_UART_RX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_RX";
+    public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.uart.EXTRA_DATA";
+
+    private InputStream mFileResourceToSend;
+    private LinkedList<byte[]> mFileResourceBuffer = new LinkedList<byte[]>();
+    private boolean mWaitingForAck = false;
+    private boolean mTransmittingResource = false;
+    private long mPrevReceivedAckTime = 0;
+    private Timer mTimer = new Timer();
+    private TimerTask mTransmitTimerTask = null;
+    /*
+    private TimerTask mTransmitTimerTask = new TimerTask() {
+        @Override
+        public void run() {
+            if (sendFileChunks(PACKETS_PER_ACK) == PACKETS_PER_ACK) {
+                mWaitingForAck = true;
+            }
+            else {
+                sendStopCommand();
+
+                mTransmittingResource = false;
+                mWaitingForAck        = false;
+            }
+        }
+    };
+    */
+
+
+    //private int mPacketsUntilAck = PACKETS_PER_ACK;
+    private BroadcastReceiver mUARTRXBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String data = intent.getStringExtra(EXTRA_DATA);
+//            Log.d("NrFToolhax", "Received data: " + data);
+
+            mPrevReceivedAckTime = System.currentTimeMillis();
+            if (mTransmitTimerTask != null) {
+                mTransmitTimerTask.cancel();
+            }
+
+            if (sendFileChunks(PACKETS_PER_ACK) == PACKETS_PER_ACK) {
+                mWaitingForAck = true;
+            }
+            else {
+                sendStopCommand();
+
+                mTransmittingResource = false;
+                mWaitingForAck        = false;
+            }
+
+            if (mWaitingForAck) {
+                mTimer.purge();
+                mTransmitTimerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        if (!mTransmittingResource) {
+                            return;
+                        }
+                        /*
+                        if ((System.currentTimeMillis() - mPrevReceivedAckTime) < ((PACKETS_PER_ACK+1) * 10)) {
+                            cancel();
+                            return;
+                        }
+                        */
+
+                        if (sendFileChunks(PACKETS_PER_ACK) == PACKETS_PER_ACK) {
+                            mWaitingForAck = true;
+                        }
+                        else {
+                            sendStopCommand();
+
+                            mTransmittingResource = false;
+                            mWaitingForAck        = false;
+                        }
+                    }
+                };
+                mTimer.schedule(mTransmitTimerTask, (PACKETS_PER_ACK) * 10);
+            }
+        }
+    };
 
 	public interface ConfigurationListener {
 		public void onConfigurationModified();
@@ -302,16 +393,102 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 
 	@Override
 	public void send(final String text) {
-		if (mServiceBinder != null)
+		if (mServiceBinder != null) {
 			mServiceBinder.send(text);
+		}
 	}
 
-	public void setEditMode(final boolean editMode) {
+	@Override
+	public void send(final byte[] text) {
+		if (mServiceBinder != null) {
+			mServiceBinder.send(text);
+		}
+	}
+
+    @Override
+    public boolean sendResourceFile(int resourceID, String resourceName) {
+        if (mTransmittingResource) {
+            return false;
+        }
+
+        Log.d("nRFToolHax", "Beginning to transmit " + resourceName);
+
+        mFileResourceToSend  = getResources().openRawResource(resourceID);
+        mWaitingForAck        = false;
+        mTransmittingResource = true;
+        //mPacketsUntilAck = PACKETS_PER_ACK;
+
+        if (sendFileChunks(PACKETS_PER_ACK) == PACKETS_PER_ACK) {
+            mWaitingForAck = true;
+        }
+        else {
+            sendStopCommand();
+
+            mTransmittingResource = false;
+        }
+
+        Toast.makeText(this, "Playing " + resourceName, Toast.LENGTH_SHORT).show();
+        return true;
+    }
+
+    protected int sendFileChunks(int numChunks) {
+        int ret = 0;
+
+        for (int i = 0; i < numChunks; ++i) {
+            int byteCount = 0;
+            byte[] chunk  = new byte[20];
+
+            try {
+                byteCount = mFileResourceToSend.read(chunk);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (byteCount == 20) {
+                send(chunk);
+                ret += 1;
+            }
+            else {
+                break;
+            }
+        }
+
+        return ret;
+    }
+
+    private void sendStopCommand() {
+        byte[] msg  = new byte[4];
+        msg[0] = 'S';
+        msg[1] = 't';
+        msg[2] = 'o';
+        msg[3] = 'p';
+
+        send(msg);
+    }
+
+    public void setEditMode(final boolean editMode) {
 		setEditMode(editMode, true);
 		invalidateOptionsMenu();
 	}
 
-	@Override
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Log.d("nRFToolhax", "registered mUARTRXBroadcastReceiver");
+        //getApplicationContext().registerReceiver(mUARTRXBroadcastReceiver, new IntentFilter(BROADCAST_UART_RX));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mUARTRXBroadcastReceiver, new IntentFilter(BROADCAST_UART_RX));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Log.d("nRFToolhax", "unregistered mUARTRXBroadcastReceiver");
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mUARTRXBroadcastReceiver);
+    }
+
+    @Override
 	public void onBackPressed() {
 		if (mSlider != null && mSlider.isOpen()) {
 			mSlider.closePane();

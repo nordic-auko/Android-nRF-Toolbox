@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.template;
+package no.nordicsemi.android.nrftoolhax.template;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -33,16 +33,16 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.NotificationCompat;
 
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.FeaturesActivity;
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.FeaturesActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
 
 public class TemplateService extends BleProfileService implements TemplateManagerCallbacks {
-	public static final String BROADCAST_TEMPLATE_MEASUREMENT = "no.nordicsemi.android.nrftoolbox.template.BROADCAST_MEASUREMENT";
-	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolbox.template.EXTRA_DATA";
+	public static final String BROADCAST_TEMPLATE_MEASUREMENT = "no.nordicsemi.android.nrftoolhax.template.BROADCAST_MEASUREMENT";
+	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.template.EXTRA_DATA";
 
-	private final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolbox.template.ACTION_DISCONNECT";
+	private final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolhax.template.ACTION_DISCONNECT";
 
 	private final static int NOTIFICATION_ID = 864;
 	private final static int OPEN_ACTIVITY_REQ = 0;

@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.hts;
+package no.nordicsemi.android.nrftoolhax.hts;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -33,16 +33,16 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.NotificationCompat;
 
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.FeaturesActivity;
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.FeaturesActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
 
 public class HTSService extends BleProfileService implements HTSManagerCallbacks {
-	public static final String BROADCAST_HTS_MEASUREMENT = "no.nordicsemi.android.nrftoolbox.hts.BROADCAST_HTS_MEASUREMENT";
-	public static final String EXTRA_TEMPERATURE = "no.nordicsemi.android.nrftoolbox.hts.EXTRA_TEMPERATURE";
+	public static final String BROADCAST_HTS_MEASUREMENT = "no.nordicsemi.android.nrftoolhax.hts.BROADCAST_HTS_MEASUREMENT";
+	public static final String EXTRA_TEMPERATURE = "no.nordicsemi.android.nrftoolhax.hts.EXTRA_TEMPERATURE";
 
-	private final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolbox.hts.ACTION_DISCONNECT";
+	private final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolhax.hts.ACTION_DISCONNECT";
 
 	private final static int NOTIFICATION_ID = 267;
 	private final static int OPEN_ACTIVITY_REQ = 0;

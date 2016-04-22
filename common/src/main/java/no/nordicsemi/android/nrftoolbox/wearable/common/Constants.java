@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.wearable.common;
+package no.nordicsemi.android.nrftoolhax.wearable.common;
 
 /**
  * Constants used for exchanging data and messages between handheld and Android Wear devices.

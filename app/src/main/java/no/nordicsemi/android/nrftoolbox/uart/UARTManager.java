@@ -20,20 +20,22 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.UUID;
 
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
 
 public class UARTManager extends BleManager<UARTManagerCallbacks> {
 	/** Nordic UART Service UUID */
@@ -47,6 +49,7 @@ public class UARTManager extends BleManager<UARTManagerCallbacks> {
 
 	private BluetoothGattCharacteristic mRXCharacteristic, mTXCharacteristic;
 	private byte[] mOutgoingBuffer;
+//	private LinkedList<byte[]> mOutgoingFIFO = new LinkedList<byte[]>();
 	private int mBufferOffset;
 
 	public UARTManager(final Context context) {
@@ -87,7 +90,9 @@ public class UARTManager extends BleManager<UARTManagerCallbacks> {
 
 				// Set the WRITE REQUEST type when the characteristic supports it. This will allow to send long write (also if the characteristic support it).
 				// In case there is no WRITE REQUEST property, this manager will divide texts longer then 20 bytes into up to 20 bytes chunks.
-				if (writeRequest)
+				if (writeCommand)
+					mRXCharacteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
+				else if (writeRequest)
 					mRXCharacteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
 			}
 
@@ -102,23 +107,25 @@ public class UARTManager extends BleManager<UARTManagerCallbacks> {
 
 		@Override
 		public void onCharacteristicWrite(final BluetoothGatt gatt, final BluetoothGattCharacteristic characteristic) {
-			// When the whole buffer has been sent
-			final byte[] buffer = mOutgoingBuffer;
-			if (mBufferOffset == buffer.length) {
-				try {
-					mCallbacks.onDataSent(new String(buffer, "UTF-8"));
-				} catch (final UnsupportedEncodingException e) {
-					// do nothing
-				}
-				mOutgoingBuffer = null;
-			} else { // Otherwise...
-				final int length = Math.min(buffer.length - mBufferOffset, MAX_PACKET_SIZE);
-				final byte[] data = new byte[length]; // We send at most 20 bytes
-				System.arraycopy(buffer, mBufferOffset, data, 0, length);
-				mBufferOffset += length;
-				mRXCharacteristic.setValue(data);
-				writeCharacteristic(mRXCharacteristic);
-			}
+//			// When the whole buffer has been sent
+//			final byte[] buffer = mOutgoingBuffer;
+//			if (mBufferOffset == buffer.length) {
+//				try {
+//					mCallbacks.onDataSent(new String(buffer, "UTF-8"));
+//				} catch (final UnsupportedEncodingException e) {
+//					// do nothing
+//				}
+//				mOutgoingBuffer = null;
+//
+//
+//			} else { // Otherwise...
+//				final int length = Math.min(buffer.length - mBufferOffset, MAX_PACKET_SIZE);
+//				final byte[] data = new byte[length]; // We send at most 20 bytes
+//				System.arraycopy(buffer, mBufferOffset, data, 0, length);
+//				mBufferOffset += length;
+//				mRXCharacteristic.setValue(data);
+//				writeCharacteristic(mRXCharacteristic);
+//			}
 		}
 
 		@Override
@@ -162,7 +169,38 @@ public class UARTManager extends BleManager<UARTManagerCallbacks> {
 				mRXCharacteristic.setValue(buffer);
 				mBufferOffset = buffer.length;
 			}
-			writeCharacteristic(mRXCharacteristic);
+			if (writeCharacteristic(mRXCharacteristic) == false) {
+                Log.d("AudioDemo", "Failed to send data");
+			}
 		}
+	}
+
+	/**
+	 * Sends the given text to RX characteristic.
+	 * @param text the text to be sent
+	 */
+	public void send(final byte[] text) {
+		// Are we connected?
+		if (mRXCharacteristic == null)
+			return;
+
+		final byte[] buffer = mOutgoingBuffer = text;
+		mBufferOffset = 0;
+
+		// Depending on whether the characteristic has the WRITE REQUEST property or not, we will either send it as it is (hoping the long write is implemented),
+		// or divide it into up to 20 bytes chunks and send them one by one.
+		final boolean writeRequest = (mRXCharacteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_WRITE) > 0;
+
+		if (!writeRequest) { // no WRITE REQUEST property
+			final int length = Math.min(buffer.length, MAX_PACKET_SIZE);
+			final byte[] data = new byte[length]; // We send at most 20 bytes
+			System.arraycopy(buffer, 0, data, 0, length);
+			mBufferOffset += length;
+			mRXCharacteristic.setValue(data);
+		} else { // there is WRITE REQUEST property
+			mRXCharacteristic.setValue(buffer);
+			mBufferOffset = buffer.length;
+		}
+		writeCharacteristic(mRXCharacteristic);
 	}
 }

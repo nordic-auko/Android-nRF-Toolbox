@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.profile;
+package no.nordicsemi.android.nrftoolhax.profile;
 
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
@@ -52,10 +52,10 @@ import java.util.UUID;
 import no.nordicsemi.android.log.ILogSession;
 import no.nordicsemi.android.log.LocalLogSession;
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.AppHelpFragment;
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.scanner.ScannerFragment;
-import no.nordicsemi.android.nrftoolbox.utility.DebugLogger;
+import no.nordicsemi.android.nrftoolhax.AppHelpFragment;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.scanner.ScannerFragment;
+import no.nordicsemi.android.nrftoolhax.utility.DebugLogger;
 
 /**
  * <p>

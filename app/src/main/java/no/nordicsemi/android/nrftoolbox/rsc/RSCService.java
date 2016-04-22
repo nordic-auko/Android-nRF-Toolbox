@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.rsc;
+package no.nordicsemi.android.nrftoolhax.rsc;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -34,25 +34,25 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.NotificationCompat;
 
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.FeaturesActivity;
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.FeaturesActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
 
 public class RSCService extends BleProfileService implements RSCManagerCallbacks {
 	private static final String TAG = "RSCService";
 
-	public static final String BROADCAST_RSC_MEASUREMENT = "no.nordicsemi.android.nrftoolbox.rsc.BROADCAST_RSC_MEASUREMENT";
-	public static final String EXTRA_SPEED = "no.nordicsemi.android.nrftoolbox.rsc.EXTRA_SPEED";
-	public static final String EXTRA_CADENCE = "no.nordicsemi.android.nrftoolbox.rsc.EXTRA_CADENCE";
-	public static final String EXTRA_TOTAL_DISTANCE = "no.nordicsemi.android.nrftoolbox.rsc.EXTRA_TOTAL_DISTANCE";
-	public static final String EXTRA_ACTIVITY = "no.nordicsemi.android.nrftoolbox.rsc.EXTRA_ACTIVITY";
+	public static final String BROADCAST_RSC_MEASUREMENT = "no.nordicsemi.android.nrftoolhax.rsc.BROADCAST_RSC_MEASUREMENT";
+	public static final String EXTRA_SPEED = "no.nordicsemi.android.nrftoolhax.rsc.EXTRA_SPEED";
+	public static final String EXTRA_CADENCE = "no.nordicsemi.android.nrftoolhax.rsc.EXTRA_CADENCE";
+	public static final String EXTRA_TOTAL_DISTANCE = "no.nordicsemi.android.nrftoolhax.rsc.EXTRA_TOTAL_DISTANCE";
+	public static final String EXTRA_ACTIVITY = "no.nordicsemi.android.nrftoolhax.rsc.EXTRA_ACTIVITY";
 
-	public static final String BROADCAST_STRIDES_UPDATE = "no.nordicsemi.android.nrftoolbox.rsc.BROADCAST_STRIDES_UPDATE";
-	public static final String EXTRA_STRIDES = "no.nordicsemi.android.nrftoolbox.rsc.EXTRA_STRIDES";
-	public static final String EXTRA_DISTANCE = "no.nordicsemi.android.nrftoolbox.rsc.EXTRA_DISTANCE";
+	public static final String BROADCAST_STRIDES_UPDATE = "no.nordicsemi.android.nrftoolhax.rsc.BROADCAST_STRIDES_UPDATE";
+	public static final String EXTRA_STRIDES = "no.nordicsemi.android.nrftoolhax.rsc.EXTRA_STRIDES";
+	public static final String EXTRA_DISTANCE = "no.nordicsemi.android.nrftoolhax.rsc.EXTRA_DISTANCE";
 
-	private final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolbox.rsc.ACTION_DISCONNECT";
+	private final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolhax.rsc.ACTION_DISCONNECT";
 
 	private RSCManager mManager;
 

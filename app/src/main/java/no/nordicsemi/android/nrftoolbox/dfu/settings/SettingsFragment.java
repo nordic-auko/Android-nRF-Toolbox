@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.dfu.settings;
+package no.nordicsemi.android.nrftoolhax.dfu.settings;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -29,7 +29,7 @@ import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 
 import no.nordicsemi.android.dfu.DfuSettingsConstants;
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 public class SettingsFragment extends PreferenceFragment implements DfuSettingsConstants, SharedPreferences.OnSharedPreferenceChangeListener {
 	public static final String SETTINGS_KEEP_BOND = "settings_keep_bond";

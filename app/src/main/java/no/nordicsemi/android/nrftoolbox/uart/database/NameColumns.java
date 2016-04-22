@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart.database;
+package no.nordicsemi.android.nrftoolhax.uart.database;
 
 public interface NameColumns {
 	/** The name */

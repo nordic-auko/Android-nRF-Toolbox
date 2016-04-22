@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.dfu;
+package no.nordicsemi.android.nrftoolhax.dfu;
 
 import android.Manifest;
 import android.app.ActivityManager;
@@ -65,16 +65,16 @@ import no.nordicsemi.android.dfu.DfuProgressListener;
 import no.nordicsemi.android.dfu.DfuProgressListenerAdapter;
 import no.nordicsemi.android.dfu.DfuServiceInitiator;
 import no.nordicsemi.android.dfu.DfuServiceListenerHelper;
-import no.nordicsemi.android.nrftoolbox.AppHelpFragment;
-import no.nordicsemi.android.nrftoolbox.PermissionRationaleFragment;
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.dfu.adapter.FileBrowserAppsAdapter;
-import no.nordicsemi.android.nrftoolbox.dfu.fragment.UploadCancelFragment;
-import no.nordicsemi.android.nrftoolbox.dfu.fragment.ZipInfoFragment;
-import no.nordicsemi.android.nrftoolbox.dfu.settings.SettingsActivity;
-import no.nordicsemi.android.nrftoolbox.dfu.settings.SettingsFragment;
-import no.nordicsemi.android.nrftoolbox.scanner.ScannerFragment;
-import no.nordicsemi.android.nrftoolbox.utility.FileHelper;
+import no.nordicsemi.android.nrftoolhax.AppHelpFragment;
+import no.nordicsemi.android.nrftoolhax.PermissionRationaleFragment;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.dfu.adapter.FileBrowserAppsAdapter;
+import no.nordicsemi.android.nrftoolhax.dfu.fragment.UploadCancelFragment;
+import no.nordicsemi.android.nrftoolhax.dfu.fragment.ZipInfoFragment;
+import no.nordicsemi.android.nrftoolhax.dfu.settings.SettingsActivity;
+import no.nordicsemi.android.nrftoolhax.dfu.settings.SettingsFragment;
+import no.nordicsemi.android.nrftoolhax.scanner.ScannerFragment;
+import no.nordicsemi.android.nrftoolhax.utility.FileHelper;
 
 /**
  * DfuActivity is the main DFU activity It implements DFUManagerCallbacks to receive callbacks from DFUManager class It implements
@@ -85,10 +85,10 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		UploadCancelFragment.CancelFragmentListener, PermissionRationaleFragment.PermissionDialogListener {
 	private static final String TAG = "DfuActivity";
 
-	private static final String PREFS_DEVICE_NAME = "no.nordicsemi.android.nrftoolbox.dfu.PREFS_DEVICE_NAME";
-	private static final String PREFS_FILE_NAME = "no.nordicsemi.android.nrftoolbox.dfu.PREFS_FILE_NAME";
-	private static final String PREFS_FILE_TYPE = "no.nordicsemi.android.nrftoolbox.dfu.PREFS_FILE_TYPE";
-	private static final String PREFS_FILE_SIZE = "no.nordicsemi.android.nrftoolbox.dfu.PREFS_FILE_SIZE";
+	private static final String PREFS_DEVICE_NAME = "no.nordicsemi.android.nrftoolhax.dfu.PREFS_DEVICE_NAME";
+	private static final String PREFS_FILE_NAME = "no.nordicsemi.android.nrftoolhax.dfu.PREFS_FILE_NAME";
+	private static final String PREFS_FILE_TYPE = "no.nordicsemi.android.nrftoolhax.dfu.PREFS_FILE_TYPE";
+	private static final String PREFS_FILE_SIZE = "no.nordicsemi.android.nrftoolhax.dfu.PREFS_FILE_SIZE";
 
 	private static final String DATA_DEVICE = "device";
 	private static final String DATA_FILE_TYPE = "file_type";

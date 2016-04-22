@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.adapter;
+package no.nordicsemi.android.nrftoolhax.adapter;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -37,10 +37,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 public class AppAdapter extends BaseAdapter {
-	private static final String CATEGORY = "no.nordicsemi.android.nrftoolbox.LAUNCHER";
+	private static final String CATEGORY = "no.nordicsemi.android.nrftoolhax.LAUNCHER";
 	private static final String MCP_PACKAGE = "no.nordicsemi.android.mcp";
 
 	private final Context mContext;

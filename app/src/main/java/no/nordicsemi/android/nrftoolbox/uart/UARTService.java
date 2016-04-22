@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -43,27 +43,27 @@ import com.google.android.gms.wearable.Wearable;
 
 import no.nordicsemi.android.log.ILogSession;
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.FeaturesActivity;
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.wearable.common.Constants;
+import no.nordicsemi.android.nrftoolhax.FeaturesActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.wearable.common.Constants;
 
 public class UARTService extends BleProfileService implements UARTManagerCallbacks {
 	private static final String TAG = "UARTService";
 
-	public static final String BROADCAST_UART_TX = "no.nordicsemi.android.nrftoolbox.uart.BROADCAST_UART_TX";
-	public static final String BROADCAST_UART_RX = "no.nordicsemi.android.nrftoolbox.uart.BROADCAST_UART_RX";
-	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolbox.uart.EXTRA_DATA";
+	public static final String BROADCAST_UART_TX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_TX";
+	public static final String BROADCAST_UART_RX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_RX";
+	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.uart.EXTRA_DATA";
 
 	/** A broadcast message with this action and the message in {@link Intent#EXTRA_TEXT} will be sent t the UART device. */
-	public final static String ACTION_SEND = "no.nordicsemi.android.nrftoolbox.uart.ACTION_SEND";
+	public final static String ACTION_SEND = "no.nordicsemi.android.nrftoolhax.uart.ACTION_SEND";
 	/** A broadcast message with this action is triggered when a message is received from the UART device. */
-	private final static String ACTION_RECEIVE = "no.nordicsemi.android.nrftoolbox.uart.ACTION_RECEIVE";
+	private final static String ACTION_RECEIVE = "no.nordicsemi.android.nrftoolhax.uart.ACTION_RECEIVE";
 	/** Action send when user press the DISCONNECT button on the notification. */
-	public final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolbox.uart.ACTION_DISCONNECT";
+	public final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolhax.uart.ACTION_DISCONNECT";
 	/** A source of an action. */
-	public final static String EXTRA_SOURCE = "no.nordicsemi.android.nrftoolbox.uart.EXTRA_SOURCE";
+	public final static String EXTRA_SOURCE = "no.nordicsemi.android.nrftoolhax.uart.EXTRA_SOURCE";
 	public final static int SOURCE_NOTIFICATION = 0;
 	public final static int SOURCE_WEARABLE = 1;
 	public final static int SOURCE_3RD_PARTY = 2;
@@ -79,8 +79,16 @@ public class UARTService extends BleProfileService implements UARTManagerCallbac
 
 	public class UARTBinder extends LocalBinder implements UARTInterface {
 		@Override
-		public void send(final String text) {
+		public void send(final String text) { mManager.send(text);
+		}
+
+		@Override
+		public void send(final byte[] text) {
 			mManager.send(text);
+		}
+
+		public boolean sendResourceFile(int resourceID, String resourceName) {
+			return false;
 		}
 
 		@Override

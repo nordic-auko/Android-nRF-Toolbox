@@ -20,12 +20,12 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.rsc.settings;
+package no.nordicsemi.android.nrftoolhax.rsc.settings;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 public class SettingsFragment extends PreferenceFragment {
 	public static final String SETTINGS_UNIT = "settings_rsc_unit";

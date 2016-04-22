@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ************************************************************************************************************************************************/
 
-package no.nordicsemi.android.nrftoolbox.widget;
+package no.nordicsemi.android.nrftoolhax.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -34,7 +34,7 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 public class ForegroundRelativeLayout extends RelativeLayout {
 

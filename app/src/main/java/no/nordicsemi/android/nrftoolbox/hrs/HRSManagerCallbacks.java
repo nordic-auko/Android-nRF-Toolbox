@@ -19,9 +19,9 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.hrs;
+package no.nordicsemi.android.nrftoolhax.hrs;
 
-import no.nordicsemi.android.nrftoolbox.profile.BleManagerCallbacks;
+import no.nordicsemi.android.nrftoolhax.profile.BleManagerCallbacks;
 
 public interface HRSManagerCallbacks extends BleManagerCallbacks {
 

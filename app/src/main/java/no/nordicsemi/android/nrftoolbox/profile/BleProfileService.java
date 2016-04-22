@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.profile;
+package no.nordicsemi.android.nrftoolhax.profile;
 
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
@@ -40,25 +40,25 @@ public abstract class BleProfileService extends Service implements BleManagerCal
 	@SuppressWarnings("unused")
 	private static final String TAG = "BleProfileService";
 
-	public static final String BROADCAST_CONNECTION_STATE = "no.nordicsemi.android.nrftoolbox.BROADCAST_CONNECTION_STATE";
-	public static final String BROADCAST_SERVICES_DISCOVERED = "no.nordicsemi.android.nrftoolbox.BROADCAST_SERVICES_DISCOVERED";
-	public static final String BROADCAST_DEVICE_READY = "no.nordicsemi.android.nrftoolbox.DEVICE_READY";
-	public static final String BROADCAST_BOND_STATE = "no.nordicsemi.android.nrftoolbox.BROADCAST_BOND_STATE";
-	public static final String BROADCAST_BATTERY_LEVEL = "no.nordicsemi.android.nrftoolbox.BROADCAST_BATTERY_LEVEL";
-	public static final String BROADCAST_ERROR = "no.nordicsemi.android.nrftoolbox.BROADCAST_ERROR";
+	public static final String BROADCAST_CONNECTION_STATE = "no.nordicsemi.android.nrftoolhax.BROADCAST_CONNECTION_STATE";
+	public static final String BROADCAST_SERVICES_DISCOVERED = "no.nordicsemi.android.nrftoolhax.BROADCAST_SERVICES_DISCOVERED";
+	public static final String BROADCAST_DEVICE_READY = "no.nordicsemi.android.nrftoolhax.DEVICE_READY";
+	public static final String BROADCAST_BOND_STATE = "no.nordicsemi.android.nrftoolhax.BROADCAST_BOND_STATE";
+	public static final String BROADCAST_BATTERY_LEVEL = "no.nordicsemi.android.nrftoolhax.BROADCAST_BATTERY_LEVEL";
+	public static final String BROADCAST_ERROR = "no.nordicsemi.android.nrftoolhax.BROADCAST_ERROR";
 
 	/** The parameter passed when creating the service. Must contain the address of the sensor that we want to connect to */
-	public static final String EXTRA_DEVICE_ADDRESS = "no.nordicsemi.android.nrftoolbox.EXTRA_DEVICE_ADDRESS";
+	public static final String EXTRA_DEVICE_ADDRESS = "no.nordicsemi.android.nrftoolhax.EXTRA_DEVICE_ADDRESS";
 	/** The key for the device name that is returned in {@link #BROADCAST_CONNECTION_STATE} with state {@link #STATE_CONNECTED}. */
-	public static final String EXTRA_DEVICE_NAME = "no.nordicsemi.android.nrftoolbox.EXTRA_DEVICE_NAME";
-	public static final String EXTRA_LOG_URI = "no.nordicsemi.android.nrftoolbox.EXTRA_LOG_URI";
-	public static final String EXTRA_CONNECTION_STATE = "no.nordicsemi.android.nrftoolbox.EXTRA_CONNECTION_STATE";
-	public static final String EXTRA_BOND_STATE = "no.nordicsemi.android.nrftoolbox.EXTRA_BOND_STATE";
-	public static final String EXTRA_SERVICE_PRIMARY = "no.nordicsemi.android.nrftoolbox.EXTRA_SERVICE_PRIMARY";
-	public static final String EXTRA_SERVICE_SECONDARY = "no.nordicsemi.android.nrftoolbox.EXTRA_SERVICE_SECONDARY";
-	public static final String EXTRA_BATTERY_LEVEL = "no.nordicsemi.android.nrftoolbox.EXTRA_BATTERY_LEVEL";
-	public static final String EXTRA_ERROR_MESSAGE = "no.nordicsemi.android.nrftoolbox.EXTRA_ERROR_MESSAGE";
-	public static final String EXTRA_ERROR_CODE = "no.nordicsemi.android.nrftoolbox.EXTRA_ERROR_CODE";
+	public static final String EXTRA_DEVICE_NAME = "no.nordicsemi.android.nrftoolhax.EXTRA_DEVICE_NAME";
+	public static final String EXTRA_LOG_URI = "no.nordicsemi.android.nrftoolhax.EXTRA_LOG_URI";
+	public static final String EXTRA_CONNECTION_STATE = "no.nordicsemi.android.nrftoolhax.EXTRA_CONNECTION_STATE";
+	public static final String EXTRA_BOND_STATE = "no.nordicsemi.android.nrftoolhax.EXTRA_BOND_STATE";
+	public static final String EXTRA_SERVICE_PRIMARY = "no.nordicsemi.android.nrftoolhax.EXTRA_SERVICE_PRIMARY";
+	public static final String EXTRA_SERVICE_SECONDARY = "no.nordicsemi.android.nrftoolhax.EXTRA_SERVICE_SECONDARY";
+	public static final String EXTRA_BATTERY_LEVEL = "no.nordicsemi.android.nrftoolhax.EXTRA_BATTERY_LEVEL";
+	public static final String EXTRA_ERROR_MESSAGE = "no.nordicsemi.android.nrftoolhax.EXTRA_ERROR_MESSAGE";
+	public static final String EXTRA_ERROR_CODE = "no.nordicsemi.android.nrftoolhax.EXTRA_ERROR_CODE";
 
 	public static final int STATE_LINK_LOSS = -1;
 	public static final int STATE_DISCONNECTED = 0;
@@ -348,7 +348,7 @@ public abstract class BleProfileService extends Service implements BleManagerCal
 
 	@Override
 	public void onBondingRequired() {
-		showToast(no.nordicsemi.android.nrftoolbox.common.R.string.bonding);
+		showToast(no.nordicsemi.android.nrftoolhax.common.R.string.bonding);
 
 		final Intent broadcast = new Intent(BROADCAST_BOND_STATE);
 		broadcast.putExtra(EXTRA_BOND_STATE, BluetoothDevice.BOND_BONDING);
@@ -357,7 +357,7 @@ public abstract class BleProfileService extends Service implements BleManagerCal
 
 	@Override
 	public void onBonded() {
-		showToast(no.nordicsemi.android.nrftoolbox.common.R.string.bonded);
+		showToast(no.nordicsemi.android.nrftoolhax.common.R.string.bonded);
 
 		final Intent broadcast = new Intent(BROADCAST_BOND_STATE);
 		broadcast.putExtra(EXTRA_BOND_STATE, BluetoothDevice.BOND_BONDED);

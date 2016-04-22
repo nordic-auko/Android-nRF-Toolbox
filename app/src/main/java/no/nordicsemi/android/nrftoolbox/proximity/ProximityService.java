@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.proximity;
+package no.nordicsemi.android.nrftoolhax.proximity;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -36,18 +36,18 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.NotificationCompat;
 
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.FeaturesActivity;
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.FeaturesActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
 
 public class ProximityService extends BleProfileService implements ProximityManagerCallbacks {
 	@SuppressWarnings("unused")
 	private static final String TAG = "ProximityService";
 
-	private final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolbox.proximity.ACTION_DISCONNECT";
-	private final static String ACTION_FIND_ME = "no.nordicsemi.android.nrftoolbox.proximity.ACTION_FIND_ME";
-	private final static String ACTION_SILENT_ME = "no.nordicsemi.android.nrftoolbox.proximity.ACTION_SILENT_ME";
+	private final static String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolhax.proximity.ACTION_DISCONNECT";
+	private final static String ACTION_FIND_ME = "no.nordicsemi.android.nrftoolhax.proximity.ACTION_FIND_ME";
+	private final static String ACTION_SILENT_ME = "no.nordicsemi.android.nrftoolhax.proximity.ACTION_SILENT_ME";
 
 	private ProximityManager mProximityManager;
 	private Ringtone mRingtoneNotification;

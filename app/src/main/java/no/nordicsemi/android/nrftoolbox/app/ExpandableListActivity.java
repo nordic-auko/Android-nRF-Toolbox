@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package no.nordicsemi.android.nrftoolbox.app;
+package no.nordicsemi.android.nrftoolhax.app;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -33,7 +33,7 @@ import android.widget.SimpleExpandableListAdapter;
 import java.util.List;
 import java.util.Map;
 
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 /**
  * An activity that displays an expandable list of items by binding to a data source implementing the ExpandableListAdapter, and exposes event handlers when the

@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.template;
+package no.nordicsemi.android.nrftoolhax.template;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -32,10 +32,10 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileServiceReadyActivity;
-import no.nordicsemi.android.nrftoolbox.template.settings.SettingsActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileServiceReadyActivity;
+import no.nordicsemi.android.nrftoolhax.template.settings.SettingsActivity;
 
 /**
  * Modify the Template Activity to match your needs.

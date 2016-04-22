@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.parser;
+package no.nordicsemi.android.nrftoolhax.parser;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 

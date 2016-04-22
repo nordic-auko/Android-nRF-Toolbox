@@ -20,13 +20,13 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.dfu;
+package no.nordicsemi.android.nrftoolhax.dfu;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import no.nordicsemi.android.nrftoolbox.FeaturesActivity;
+import no.nordicsemi.android.nrftoolhax.FeaturesActivity;
 
 public class NotificationActivity extends Activity {
 	@Override

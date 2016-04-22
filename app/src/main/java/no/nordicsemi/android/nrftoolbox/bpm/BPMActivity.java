@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.bpm;
+package no.nordicsemi.android.nrftoolhax.bpm;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -27,9 +27,9 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.UUID;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileActivity;
 
 // TODO The BPMActivity should be rewritten to use the service approach, like other do.
 public class BPMActivity extends BleProfileActivity implements BPMManagerCallbacks {

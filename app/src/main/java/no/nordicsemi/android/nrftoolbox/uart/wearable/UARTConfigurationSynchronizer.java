@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart.wearable;
+package no.nordicsemi.android.nrftoolhax.uart.wearable;
 
 import android.content.Context;
 import android.net.Uri;
@@ -35,9 +35,9 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.util.ArrayList;
 
-import no.nordicsemi.android.nrftoolbox.wearable.common.Constants;
-import no.nordicsemi.android.nrftoolbox.uart.domain.Command;
-import no.nordicsemi.android.nrftoolbox.uart.domain.UartConfiguration;
+import no.nordicsemi.android.nrftoolhax.wearable.common.Constants;
+import no.nordicsemi.android.nrftoolhax.uart.domain.Command;
+import no.nordicsemi.android.nrftoolhax.uart.domain.UartConfiguration;
 
 public class UARTConfigurationSynchronizer {
 	private static final String WEAR_URI_PREFIX = "wear:"; // no / at the end as the path already has it

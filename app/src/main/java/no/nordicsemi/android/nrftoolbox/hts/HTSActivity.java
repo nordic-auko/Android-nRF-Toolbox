@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.hts;
+package no.nordicsemi.android.nrftoolhax.hts;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -35,11 +35,11 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.UUID;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.hts.settings.SettingsActivity;
-import no.nordicsemi.android.nrftoolbox.hts.settings.SettingsFragment;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileServiceReadyActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.hts.settings.SettingsActivity;
+import no.nordicsemi.android.nrftoolhax.hts.settings.SettingsFragment;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileServiceReadyActivity;
 
 /**
  * HTSActivity is the main Health Thermometer activity. It implements {@link HTSManagerCallbacks} to receive callbacks from {@link HTSManager} class. The activity supports portrait and landscape

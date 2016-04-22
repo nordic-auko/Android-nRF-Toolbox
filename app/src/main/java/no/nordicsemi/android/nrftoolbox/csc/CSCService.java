@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.csc;
+package no.nordicsemi.android.nrftoolhax.csc;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -35,27 +35,27 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.NotificationCompat;
 
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.FeaturesActivity;
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.profile.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.csc.settings.SettingsFragment;
+import no.nordicsemi.android.nrftoolhax.FeaturesActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.profile.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.csc.settings.SettingsFragment;
 
 public class CSCService extends BleProfileService implements CSCManagerCallbacks {
 	private static final String TAG = "CSCService";
 
-	public static final String BROADCAST_WHEEL_DATA = "no.nordicsemi.android.nrftoolbox.csc.BROADCAST_WHEEL_DATA";
-	public static final String EXTRA_SPEED = "no.nordicsemi.android.nrftoolbox.csc.EXTRA_SPEED";
+	public static final String BROADCAST_WHEEL_DATA = "no.nordicsemi.android.nrftoolhax.csc.BROADCAST_WHEEL_DATA";
+	public static final String EXTRA_SPEED = "no.nordicsemi.android.nrftoolhax.csc.EXTRA_SPEED";
 	/** Distance in meters */
-	public static final String EXTRA_DISTANCE = "no.nordicsemi.android.nrftoolbox.csc.EXTRA_DISTANCE";
+	public static final String EXTRA_DISTANCE = "no.nordicsemi.android.nrftoolhax.csc.EXTRA_DISTANCE";
 	/** Total distance in meters */
-	public static final String EXTRA_TOTAL_DISTANCE = "no.nordicsemi.android.nrftoolbox.csc.EXTRA_TOTAL_DISTANCE";
+	public static final String EXTRA_TOTAL_DISTANCE = "no.nordicsemi.android.nrftoolhax.csc.EXTRA_TOTAL_DISTANCE";
 
-	public static final String BROADCAST_CRANK_DATA = "no.nordicsemi.android.nrftoolbox.csc.BROADCAST_CRANK_DATA";
-	public static final String EXTRA_GEAR_RATIO = "no.nordicsemi.android.nrftoolbox.csc.EXTRA_GEAR_RATIO";
-	public static final String EXTRA_CADENCE = "no.nordicsemi.android.nrftoolbox.csc.EXTRA_CADENCE";
+	public static final String BROADCAST_CRANK_DATA = "no.nordicsemi.android.nrftoolhax.csc.BROADCAST_CRANK_DATA";
+	public static final String EXTRA_GEAR_RATIO = "no.nordicsemi.android.nrftoolhax.csc.EXTRA_GEAR_RATIO";
+	public static final String EXTRA_CADENCE = "no.nordicsemi.android.nrftoolhax.csc.EXTRA_CADENCE";
 
-	private static final String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolbox.csc.ACTION_DISCONNECT";
+	private static final String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolhax.csc.ACTION_DISCONNECT";
 
 	private CSCManager mManager;
 

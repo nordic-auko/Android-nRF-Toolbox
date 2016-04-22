@@ -20,10 +20,12 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 
 public interface UARTInterface {
 
 	public void send(final String text);
+	public void send(final byte[] text);
+	public boolean sendResourceFile(int resourceID, String resourceName);
 }

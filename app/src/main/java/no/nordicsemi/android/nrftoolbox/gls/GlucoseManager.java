@@ -19,7 +19,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package no.nordicsemi.android.nrftoolbox.gls;
+package no.nordicsemi.android.nrftoolhax.gls;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -34,11 +34,11 @@ import java.util.Queue;
 import java.util.UUID;
 
 import no.nordicsemi.android.log.Logger;
-import no.nordicsemi.android.nrftoolbox.profile.BleManager;
-import no.nordicsemi.android.nrftoolbox.parser.GlucoseMeasurementContextParser;
-import no.nordicsemi.android.nrftoolbox.parser.GlucoseMeasurementParser;
-import no.nordicsemi.android.nrftoolbox.parser.RecordAccessControlPointParser;
-import no.nordicsemi.android.nrftoolbox.utility.DebugLogger;
+import no.nordicsemi.android.nrftoolhax.profile.BleManager;
+import no.nordicsemi.android.nrftoolhax.parser.GlucoseMeasurementContextParser;
+import no.nordicsemi.android.nrftoolhax.parser.GlucoseMeasurementParser;
+import no.nordicsemi.android.nrftoolhax.parser.RecordAccessControlPointParser;
+import no.nordicsemi.android.nrftoolhax.utility.DebugLogger;
 
 @SuppressWarnings("unused")
 public class GlucoseManager extends BleManager<GlucoseManagerCallbacks> {

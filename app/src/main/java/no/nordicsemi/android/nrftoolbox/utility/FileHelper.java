@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.utility;
+package no.nordicsemi.android.nrftoolhax.utility;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -33,12 +33,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 public class FileHelper {
 	private static final String TAG = "FileHelper";
 
-	private static final String PREFS_SAMPLES_VERSION = "no.nordicsemi.android.nrftoolbox.dfu.PREFS_SAMPLES_VERSION";
+	private static final String PREFS_SAMPLES_VERSION = "no.nordicsemi.android.nrftoolhax.dfu.PREFS_SAMPLES_VERSION";
 	private static final int CURRENT_SAMPLES_VERSION = 4;
 
 	public static final String NORDIC_FOLDER = "Nordic Semiconductor";
