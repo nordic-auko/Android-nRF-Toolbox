@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -32,7 +32,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import no.nordicsemi.android.nrftoolbox.R;
+import no.nordicsemi.android.nrftoolhax.R;
 
 public class UARTConfigurationItemLayout extends LinearLayout implements WearableListView.OnCenterProximityListener {
 	private static final int ANIMATION_DURATION_MS = 150;

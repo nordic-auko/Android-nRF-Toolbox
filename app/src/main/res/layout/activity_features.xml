@@ -67,7 +67,7 @@
 				android:layout_marginBottom="6dp"
 				android:src="@drawable/background_title"/>
 
-			<no.nordicsemi.android.nrftoolbox.widget.TrebuchetBoldTextView
+			<no.nordicsemi.android.nrftoolhax.widget.TrebuchetBoldTextView
 				android:id="@android:id/empty"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"

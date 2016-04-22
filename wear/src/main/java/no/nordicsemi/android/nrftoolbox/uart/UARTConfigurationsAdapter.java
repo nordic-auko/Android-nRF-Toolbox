@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.content.Context;
 import android.support.wearable.view.WearableListView;
@@ -31,8 +31,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.uart.domain.UartConfiguration;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.uart.domain.UartConfiguration;
 
 public class UARTConfigurationsAdapter extends WearableListView.Adapter {
 	private final LayoutInflater mInflater;

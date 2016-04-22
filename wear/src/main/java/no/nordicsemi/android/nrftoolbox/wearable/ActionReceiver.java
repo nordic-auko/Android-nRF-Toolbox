@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.wearable;
+package no.nordicsemi.android.nrftoolhax.wearable;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -34,13 +34,13 @@ import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
-import no.nordicsemi.android.nrftoolbox.wearable.common.Constants;
+import no.nordicsemi.android.nrftoolhax.wearable.common.Constants;
 
 public class ActionReceiver extends BroadcastReceiver {
 	private static final String TAG = "ActionReceiver";
 
-	public static final String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolbox.ACTION_DISCONNECT";
-	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolbox.EXTRA_DATA";
+	public static final String ACTION_DISCONNECT = "no.nordicsemi.android.nrftoolhax.ACTION_DISCONNECT";
+	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.EXTRA_DATA";
 
 	@Override
 	public void onReceive(final Context context, final Intent intent) {

@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -33,14 +33,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.UUID;
 
-import no.nordicsemi.android.nrftoolbox.ble.BleManager;
-import no.nordicsemi.android.nrftoolbox.ble.BleProfile;
+import no.nordicsemi.android.nrftoolhax.ble.BleManager;
+import no.nordicsemi.android.nrftoolhax.ble.BleProfile;
 
 public class UARTProfile extends BleProfile {
 	/** Broadcast sent when a UART message is received. */
-	public static final String BROADCAST_DATA_RECEIVED = "no.nordicsemi.android.nrftoolbox.uart.BROADCAST_DATA_RECEIVED";
+	public static final String BROADCAST_DATA_RECEIVED = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_DATA_RECEIVED";
 	/** The message. */
-	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolbox.EXTRA_DATA";
+	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.EXTRA_DATA";
 
 	/** Nordic UART Service UUID */
 	private final static UUID UART_SERVICE_UUID = UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");

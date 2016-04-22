@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox;
+package no.nordicsemi.android.nrftoolhax;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
@@ -37,8 +37,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import no.nordicsemi.android.nrftoolbox.ble.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.uart.UARTConfigurationsActivity;
+import no.nordicsemi.android.nrftoolhax.ble.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.uart.UARTConfigurationsActivity;
 
 public class ScannerActivity extends Activity {
 	private static final String TAG = "ScannerActivity";

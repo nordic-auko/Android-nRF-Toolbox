@@ -21,7 +21,7 @@
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
 <resources>
-    <string name="uart_feature_title">UART</string>
+    <string name="uart_feature_title">Audio demo</string>
     
     <string name="uart_action_configure">EDIT</string>
     <string name="uart_action_end">DONE</string>
@@ -39,7 +39,7 @@
     <string name="uart_feature_title_long">UART</string>
     <dimen name="uart_feature_title_long_margin">-24dp</dimen>
     
-    <string name="uart_default_name">DEFAULT UART</string>
+    <string name="uart_default_name">NOT CONNECTED</string>
     <string name="uart_empty">No data to display.</string>
 
 	<string name="uart_rename_configuration_title">Rename configuration</string>

@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.wearable;
+package no.nordicsemi.android.nrftoolhax.wearable;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -30,9 +30,9 @@ import android.support.v4.app.NotificationManagerCompat;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.wearable.common.Constants;
-import no.nordicsemi.android.nrftoolbox.uart.UARTConfigurationsActivity;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.wearable.common.Constants;
+import no.nordicsemi.android.nrftoolhax.uart.UARTConfigurationsActivity;
 
 public class MainWearableListenerService extends com.google.android.gms.wearable.WearableListenerService {
 	public static final String TAG = "UARTWLS";

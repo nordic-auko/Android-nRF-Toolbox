@@ -30,14 +30,14 @@
 		android:id="@+id/toolbar_actionbar"
 		layout="@layout/toolbar_w_spinner"/>
 
-	<no.nordicsemi.android.nrftoolbox.widget.ForegroundLinearLayout
+	<no.nordicsemi.android.nrftoolhax.widget.ForegroundLinearLayout
 		style="@style/HeaderShadow"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
 		<fragment
 			android:id="@+id/fragment_control"
-			android:name="no.nordicsemi.android.nrftoolbox.uart.UARTControlFragment"
+			android:name="no.nordicsemi.android.nrftoolhax.uart.UARTControlFragment"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
 			android:layout_weight="8"
@@ -50,7 +50,7 @@
 
 			<fragment
 				android:id="@+id/fragment_log"
-				android:name="no.nordicsemi.android.nrftoolbox.uart.UARTLogFragment"
+				android:name="no.nordicsemi.android.nrftoolhax.uart.UARTLogFragment"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				tools:layout="@layout/fragment_feature_uart_log"/>
@@ -61,6 +61,6 @@
 				android:scaleType="fitXY"
 				android:src="@drawable/shadow_l"/>
 		</FrameLayout>
-	</no.nordicsemi.android.nrftoolbox.widget.ForegroundLinearLayout>
+	</no.nordicsemi.android.nrftoolhax.widget.ForegroundLinearLayout>
 
 </LinearLayout>

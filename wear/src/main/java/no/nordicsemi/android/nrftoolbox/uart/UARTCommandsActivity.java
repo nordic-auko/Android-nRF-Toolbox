@@ -20,7 +20,7 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.uart;
+package no.nordicsemi.android.nrftoolhax.uart;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -55,12 +55,12 @@ import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
-import no.nordicsemi.android.nrftoolbox.R;
-import no.nordicsemi.android.nrftoolbox.ble.BleProfile;
-import no.nordicsemi.android.nrftoolbox.ble.BleProfileService;
-import no.nordicsemi.android.nrftoolbox.wearable.common.Constants;
-import no.nordicsemi.android.nrftoolbox.uart.domain.Command;
-import no.nordicsemi.android.nrftoolbox.uart.domain.UartConfiguration;
+import no.nordicsemi.android.nrftoolhax.R;
+import no.nordicsemi.android.nrftoolhax.ble.BleProfile;
+import no.nordicsemi.android.nrftoolhax.ble.BleProfileService;
+import no.nordicsemi.android.nrftoolhax.wearable.common.Constants;
+import no.nordicsemi.android.nrftoolhax.uart.domain.Command;
+import no.nordicsemi.android.nrftoolhax.uart.domain.UartConfiguration;
 
 public class UARTCommandsActivity extends Activity implements UARTCommandsAdapter.OnCommandSelectedListener, GoogleApiClient.ConnectionCallbacks,
 		DataApi.DataListener, GoogleApiClient.OnConnectionFailedListener, MessageApi.MessageListener {

@@ -21,7 +21,7 @@
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
 
-<manifest package="no.nordicsemi.android.nrftoolbox"
+<manifest package="no.nordicsemi.android.nrftoolhax"
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<uses-feature android:name="android.hardware.type.watch"/>
@@ -59,7 +59,7 @@
 		<!-- This receiver needs to be exported as it listens for notification broadcasts. -->
 		<receiver android:name=".wearable.ActionReceiver">
 			<intent-filter>
-				<action android:name="no.nordicsemi.android.nrftoolbox.ACTION_DISCONNECT" />
+				<action android:name="no.nordicsemi.android.nrftoolhax.ACTION_DISCONNECT" />
 			</intent-filter>
 		</receiver>
 

@@ -20,11 +20,11 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package no.nordicsemi.android.nrftoolbox.ble;
+package no.nordicsemi.android.nrftoolhax.ble;
 
 import android.bluetooth.BluetoothGatt;
 
-import no.nordicsemi.android.nrftoolbox.uart.UARTProfile;
+import no.nordicsemi.android.nrftoolhax.uart.UARTProfile;
 
 public class BleProfileProvider {
 
