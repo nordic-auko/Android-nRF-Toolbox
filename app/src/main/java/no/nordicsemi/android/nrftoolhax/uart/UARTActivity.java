@@ -78,6 +78,7 @@ import org.simpleframework.xml.stream.InputNode;
 import org.simpleframework.xml.stream.NodeMap;
 import org.simpleframework.xml.stream.OutputNode;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -89,6 +90,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
@@ -139,7 +141,7 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
     public static final String BROADCAST_UART_RX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_RX";
     public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.uart.EXTRA_DATA";
 
-    private InputStream mFileResourceToSend;
+    //private InputStream mFileResourceToSend;
     private LinkedList<byte[]> mFileResourceBuffer = new LinkedList<byte[]>();
     private boolean mWaitingForAck = false;
     private boolean mTransmittingResource = false;
@@ -413,7 +415,26 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 
         Log.d("nRFToolHax", "Beginning to transmit " + resourceName);
 
-        mFileResourceToSend  = getResources().openRawResource(resourceID);
+        //mFileResourceToSend  = getResources().openRawResource(resourceID);
+		BufferedInputStream inputStream = new BufferedInputStream(getResources().openRawResource(resourceID));
+		int byteCount = 20;
+
+		mFileResourceBuffer.clear();
+
+		while (byteCount == 20) {
+			byte frame[] = new byte[20];
+
+			try {
+				byteCount = inputStream.read(frame, 0, 20);
+			} catch (IOException e) {
+				e.printStackTrace();
+				byteCount = 0;
+			}
+			if (byteCount == 20) {
+				mFileResourceBuffer.addLast(frame);
+			}
+		}
+
         mWaitingForAck        = false;
         mTransmittingResource = true;
         //mPacketsUntilAck = PACKETS_PER_ACK;
@@ -438,17 +459,28 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
             int byteCount = 0;
             byte[] chunk  = new byte[20];
 
-            try {
-                byteCount = mFileResourceToSend.read(chunk);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                byteCount = mFileResourceToSend.read(chunk);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
+			try {
+				chunk = mFileResourceBuffer.removeFirst();
+			} catch (NoSuchElementException e) {
+				chunk = null;
+			}
+
+			if (chunk == null) {
+				byteCount = 0;
+			} else {
+				byteCount = chunk.length;
+			}
 
             if (byteCount == 20) {
                 send(chunk);
                 ret += 1;
-            }
-            else {
+            } else {
                 break;
             }
         }
