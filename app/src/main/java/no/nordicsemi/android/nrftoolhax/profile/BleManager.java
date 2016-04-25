@@ -33,6 +33,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
+import android.util.Log;
 
 import java.util.Queue;
 import java.util.UUID;
@@ -416,8 +417,8 @@ public abstract class BleManager<E extends BleManagerCallbacks> {
 		if ((properties & (BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE)) == 0)
 			return false;
 
-		Logger.v(mLogSession, "Writing characteristic " + characteristic.getUuid() + " (" + getWriteType(characteristic.getWriteType()) + ")");
-		Logger.d(mLogSession, "gatt.writeCharacteristic(" + characteristic.getUuid() + ")");
+		Log.v("nRFToolhax", "Writing characteristic " + characteristic.getUuid() + " (" + getWriteType(characteristic.getWriteType()) + ")");
+		Log.d("nRFToolhax", "gatt.writeCharacteristic(" + characteristic.getUuid() + ")");
 		return gatt.writeCharacteristic(characteristic);
 	}
 

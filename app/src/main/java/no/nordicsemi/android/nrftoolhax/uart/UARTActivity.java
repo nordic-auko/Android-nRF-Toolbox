@@ -136,89 +136,11 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 	private ConfigurationListener mConfigurationListener;
 	private boolean mEditMode;
 
-    private final static int PACKETS_PER_ACK = 10;
-    public static final String BROADCAST_UART_TX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_TX";
-    public static final String BROADCAST_UART_RX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_RX";
-    public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.uart.EXTRA_DATA";
-
     //private InputStream mFileResourceToSend;
     private LinkedList<byte[]> mFileResourceBuffer = new LinkedList<byte[]>();
-    private boolean mWaitingForAck = false;
     private boolean mTransmittingResource = false;
-    private long mPrevReceivedAckTime = 0;
     private Timer mTimer = new Timer();
-    private TimerTask mTransmitTimerTask = null;
-    /*
-    private TimerTask mTransmitTimerTask = new TimerTask() {
-        @Override
-        public void run() {
-            if (sendFileChunks(PACKETS_PER_ACK) == PACKETS_PER_ACK) {
-                mWaitingForAck = true;
-            }
-            else {
-                sendStopCommand();
 
-                mTransmittingResource = false;
-                mWaitingForAck        = false;
-            }
-        }
-    };
-    */
-
-
-    //private int mPacketsUntilAck = PACKETS_PER_ACK;
-    private BroadcastReceiver mUARTRXBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String data = intent.getStringExtra(EXTRA_DATA);
-//            Log.d("NrFToolhax", "Received data: " + data);
-
-            mPrevReceivedAckTime = System.currentTimeMillis();
-            if (mTransmitTimerTask != null) {
-                mTransmitTimerTask.cancel();
-            }
-
-            if (sendFileChunks(PACKETS_PER_ACK) == PACKETS_PER_ACK) {
-                mWaitingForAck = true;
-            }
-            else {
-                sendStopCommand();
-
-                mTransmittingResource = false;
-                mWaitingForAck        = false;
-            }
-
-            if (mWaitingForAck) {
-                mTimer.purge();
-                mTransmitTimerTask = new TimerTask() {
-                    @Override
-                    public void run() {
-
-                        if (!mTransmittingResource) {
-                            return;
-                        }
-                        /*
-                        if ((System.currentTimeMillis() - mPrevReceivedAckTime) < ((PACKETS_PER_ACK+1) * 10)) {
-                            cancel();
-                            return;
-                        }
-                        */
-
-                        if (sendFileChunks(PACKETS_PER_ACK) == PACKETS_PER_ACK) {
-                            mWaitingForAck = true;
-                        }
-                        else {
-                            sendStopCommand();
-
-                            mTransmittingResource = false;
-                            mWaitingForAck        = false;
-                        }
-                    }
-                };
-                mTimer.schedule(mTransmitTimerTask, (PACKETS_PER_ACK) * 10);
-            }
-        }
-    };
 
 	public interface ConfigurationListener {
 		public void onConfigurationModified();
@@ -415,7 +337,6 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 
         Log.d("nRFToolHax", "Beginning to transmit " + resourceName);
 
-        //mFileResourceToSend  = getResources().openRawResource(resourceID);
 		BufferedInputStream inputStream = new BufferedInputStream(getResources().openRawResource(resourceID));
 		int byteCount = 20;
 
@@ -435,18 +356,19 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 			}
 		}
 
-        mWaitingForAck        = false;
         mTransmittingResource = true;
-        //mPacketsUntilAck = PACKETS_PER_ACK;
 
-        if (sendFileChunks(PACKETS_PER_ACK) == PACKETS_PER_ACK) {
-            mWaitingForAck = true;
-        }
-        else {
-            sendStopCommand();
-
-            mTransmittingResource = false;
-        }
+		mTimer.purge();
+		mTimer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				if (sendFileChunks(1) != 1) {
+					mTransmittingResource = false;
+					sendStopCommand();
+					cancel();
+				}
+			}
+		}, 10, 10);
 
         Toast.makeText(this, "Playing " + resourceName, Toast.LENGTH_SHORT).show();
         return true;
@@ -507,17 +429,17 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
     protected void onStart() {
         super.onStart();
 
-        Log.d("nRFToolhax", "registered mUARTRXBroadcastReceiver");
-        //getApplicationContext().registerReceiver(mUARTRXBroadcastReceiver, new IntentFilter(BROADCAST_UART_RX));
-        LocalBroadcastManager.getInstance(this).registerReceiver(mUARTRXBroadcastReceiver, new IntentFilter(BROADCAST_UART_RX));
+//        Log.d("nRFToolhax", "registered mUARTRXBroadcastReceiver");
+//        //getApplicationContext().registerReceiver(mUARTRXBroadcastReceiver, new IntentFilter(BROADCAST_UART_RX));
+//        LocalBroadcastManager.getInstance(this).registerReceiver(mUARTRXBroadcastReceiver, new IntentFilter(BROADCAST_UART_RX));
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        Log.d("nRFToolhax", "unregistered mUARTRXBroadcastReceiver");
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mUARTRXBroadcastReceiver);
+//        Log.d("nRFToolhax", "unregistered mUARTRXBroadcastReceiver");
+//        LocalBroadcastManager.getInstance(this).unregisterReceiver(mUARTRXBroadcastReceiver);
     }
 
     @Override
