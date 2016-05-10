@@ -54,43 +54,16 @@ import no.nordicsemi.android.nrftoolhax.uart.domain.UartConfiguration;
 public class UARTControlFragment extends Fragment implements GridView.OnItemClickListener, UARTActivity.ConfigurationListener {
 	private final static String TAG = "UARTControlFragment";
 	private final static String SIS_EDIT_MODE = "sis_edit_mode";
-    private final static int    PACKETS_PER_ACK = 5;
 
-    /*
-    public static final String BROADCAST_UART_TX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_TX";
-    public static final String BROADCAST_UART_RX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_RX";
-    public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.uart.EXTRA_DATA";
-    */
 
 	private UartConfiguration mConfiguration;
 	private UARTButtonAdapter mAdapter;
 	private boolean mEditMode;
 
-	private Context mContext;
-    /*
-	private boolean mIsRunning;
-	private UARTInterface mUart;
-	private InputStream mAudioSample;
-	private Timer mTimer = new Timer();
-	private Handler mHandler = new Handler(Looper.getMainLooper());
-	private LinkedList<byte[]> mAudioFrameBuffer = new LinkedList<byte[]>();
-    private boolean mWaitingForAck = false;
-    private int     mPacketsUntilAck = PACKETS_PER_ACK;
-    private BroadcastReceiver mUARTRXBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String data = intent.getStringExtra(EXTRA_DATA);
-            Log.d("NrFToolhax", "Received data: " + data);
-        }
-    };
-    */
 
 	@Override
 	public void onAttach(final Context context) {
 		super.onAttach(context);
-
-		mContext = context;
-        //mContext.registerReceiver(mUARTRXBroadcastReceiver, new IntentFilter(BROADCAST_UART_RX));
 
 		try {
 			((UARTActivity)context).setConfigurationListener(this);
@@ -142,113 +115,42 @@ public class UARTControlFragment extends Fragment implements GridView.OnItemClic
 		} else {
 			final String command = ((Command)mAdapter.getItem(position)).getCommand();
 
-			//if (!mIsRunning) {
+			int resourceID = 0;
+			String sampleName = "";
 
-				int resourceID = 0;
-				String sampleName = "";
-
-				if (command.contains("1")){
-					sampleName = "sample 1";
-					resourceID = R.raw.sample_1_1khz;
-				}
-				else if (command.contains("2")){
-					sampleName = "sample 2";
-					resourceID = R.raw.sample_2_dagsnytt_atten_intro;
-				}
-				else if (command.contains("3")){
-					sampleName = "sample 3";
-					resourceID = R.raw.sample_3_bbc_news_intro;
-				}
-				else if (command.contains("4")){
-					sampleName = "sample 4";
-					resourceID = R.raw.sample_4_fire_it_up;
-				}
-				else if (command.contains("5")){
-					sampleName = "sample 5";
-					resourceID = R.raw.sample_5_pzeyes03;
-				}
-				else if (command.contains("6")){
-					sampleName = "sample 6";
-					resourceID = R.raw.sample_6_ppwrdown;
-				}
-				else {
-					Toast.makeText(mContext, "Sample not found", Toast.LENGTH_SHORT).show();
-					return;
-				}
-
-                UARTInterface uartInterface = (UARTInterface) getActivity();
-                uartInterface.sendResourceFile(resourceID, sampleName);
-
-                return;
-
-                /*
-				mAudioSample     = getResources().openRawResource(resourceID);
-
-                mWaitingForAck   = false;
-                mPacketsUntilAck = PACKETS_PER_ACK;
-				Toast.makeText(mContext, "Playing " + sampleName, Toast.LENGTH_SHORT).show();
-
-				mUart = (UARTInterface) getActivity();
-
-				mTimer.schedule(new TimerTask() {
-					@Override
-					public void run() {
-						int byteCount = 0;
-						byte[] frame = new byte[20];
-
-						if (mWaitingForAck) {
-                            return;
-                        }
-
-						try {
-							byteCount = mAudioSample.read(frame);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-
-						if (byteCount == 20) {
-							mAudioFrameBuffer.add(frame);
-							mHandler.post(new Runnable() {
-								@Override
-								public void run() {
-									mUart.send(mAudioFrameBuffer.remove());
-                                    mPacketsUntilAck -= 1;
-                                    if (mPacketsUntilAck == 0) {
-                                        mWaitingForAck = true;
-                                    }
-								}
-							});
-						}
-						else {
-							cancel();
-							mHandler.post(new Runnable() {
-								@Override
-								public void run() {
-									try {
-										byte[] msg = new byte[4];
-										msg[0] = 'S';
-										msg[1] = 't';
-										msg[2] = 'o';
-										msg[3] = 'p';
-										mUart.send(msg);
-										Thread.sleep(10);
-										mUart.send(msg);
-										Thread.sleep(20);
-										mUart.send(msg);
-									} catch (InterruptedException e) {
-										e.printStackTrace();
-									}
-									mIsRunning = false;
-								}
-							});
-						}
-					}
-				}, 10, 10);
+			if (command.contains("1")){
+				sampleName = "sample 1";
+				resourceID = R.raw.sample_1_1khz;
+			}
+			else if (command.contains("2")){
+				sampleName = "sample 2";
+				resourceID = R.raw.sample_2_dagsnytt_atten_intro;
+			}
+			else if (command.contains("3")){
+				sampleName = "sample 3";
+				resourceID = R.raw.sample_3_bbc_news_intro;
+			}
+			else if (command.contains("4")){
+				sampleName = "sample 4";
+				resourceID = R.raw.sample_4_fire_it_up;
+			}
+			else if (command.contains("5")){
+				sampleName = "sample 5";
+				resourceID = R.raw.sample_5_pzeyes03;
+			}
+			else if (command.contains("6")){
+				sampleName = "sample 6";
+				resourceID = R.raw.sample_6_ppwrdown;
 			}
 			else {
-				Toast.makeText(mContext, "Please wait", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getContext(), "Sample not found", Toast.LENGTH_SHORT).show();
+				return;
 			}
-			*/
+
+			UARTInterface uartInterface = (UARTInterface) getActivity();
+			uartInterface.sendResourceFile(resourceID, sampleName);
+
+			return;
 		}
 	}
 

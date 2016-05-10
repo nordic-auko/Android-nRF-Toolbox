@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "no.nordicsemi.android.nrftoolbox"
+        applicationId "no.nordicsemi.android.nrftoolhax"
         minSdkVersion 20
         targetSdkVersion 23
         versionCode 41

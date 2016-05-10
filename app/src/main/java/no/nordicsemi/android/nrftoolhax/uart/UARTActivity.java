@@ -136,10 +136,31 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 	private ConfigurationListener mConfigurationListener;
 	private boolean mEditMode;
 
-    //private InputStream mFileResourceToSend;
+	public static final String BROADCAST_UART_TX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_TX";
+	public static final String BROADCAST_UART_RX = "no.nordicsemi.android.nrftoolhax.uart.BROADCAST_UART_RX";
+	public static final String EXTRA_DATA = "no.nordicsemi.android.nrftoolhax.uart.EXTRA_DATA";
+
     private LinkedList<byte[]> mFileResourceBuffer = new LinkedList<byte[]>();
     private boolean mTransmittingResource = false;
     private Timer mTimer = new Timer();
+	private int mExtraFrames;
+	private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String dataString = intent.getStringExtra(EXTRA_DATA);
+			int dataInt = Integer.valueOf(intent.getStringExtra(EXTRA_DATA));
+
+			Log.d("NrFToolhax", "Received data: " + dataString);
+			Log.d("NrFToolhax", "Received data int: " + Integer.toString(dataInt));
+			/*
+			if (dataInt < 10) {
+				mExtraFrames = 10 - dataInt;
+			} else {
+				mExtraFrames = 0;
+			}
+			*/
+		}
+	};
 
 
 	public interface ConfigurationListener {
@@ -236,6 +257,7 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 
 	@Override
 	protected void onDestroy() {
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
 		super.onDestroy();
 		mWearableSynchronizer.close();
 	}
@@ -258,6 +280,9 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 				}
 			});
 		}
+
+		LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, new IntentFilter(BROADCAST_UART_RX));
+
 	}
 
 	@Override
@@ -357,13 +382,19 @@ public class UARTActivity extends BleProfileServiceReadyActivity<UARTService.UAR
 		}
 
         mTransmittingResource = true;
+		mExtraFrames          = 0;
 
 		mTimer.purge();
 		mTimer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-				if (sendFileChunks(1) != 1) {
+				int numFrames;
+
+				numFrames = 1 + mExtraFrames;
+
+				if (sendFileChunks(numFrames) != numFrames) {
 					mTransmittingResource = false;
+					mExtraFrames          = 0;
 					sendStopCommand();
 					cancel();
 				}
